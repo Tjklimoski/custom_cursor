@@ -1,7 +1,6 @@
 *, *::after, *::before {
   box-sizing: border-box;
   padding: 0;
-  cursor: none;
 }
 
 html {
@@ -17,6 +16,8 @@ body {
   padding: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5rem;
+  position: relative;
+  overflow-x: hidden;
 }
 
 header {
@@ -93,18 +94,20 @@ a {
 }
 
 .cursor {
-  --top: 0;
-  --left: 0;
-  width: 1.5rem;
+  --x: 0;
+  --y: 0;
+  --scale: 1;
+  width: calc(1.5rem * var(--scale));
   aspect-ratio: 1;
   background-color: white;
   border-radius: 2rem;
-  position: absolute;
-  top: var(--top);
-  left: var(--left);
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* transform: translate(0, 0); */
+  transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
   mix-blend-mode: difference;
   pointer-events: none;
-  scale: 1;
-  transition: scale 150ms ease-in-out;
+  z-index: 1000;
+  transition: width 150ms ease-in-out;
 }
