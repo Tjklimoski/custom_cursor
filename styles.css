@@ -1,6 +1,7 @@
 *, *::after, *::before {
   box-sizing: border-box;
   padding: 0;
+  cursor: none;
 }
 
 html {
@@ -28,6 +29,10 @@ h1 {
   font-size: 3rem;
 }
 
+h1 a {
+  text-decoration: none;
+}
+
 button {
   background: transparent;
   padding: .5rem 1rem;
@@ -37,6 +42,11 @@ button {
 
 img {
   border-radius: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 .hero-img {
@@ -94,4 +104,7 @@ img {
   left: var(--left);
   transform: translate(-50%, -50%);
   mix-blend-mode: difference;
+  pointer-events: none;
+  scale: 1;
+  transition: scale 150ms ease-in-out;
 }

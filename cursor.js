@@ -12,6 +12,27 @@ document.addEventListener("mouseleave", () => {
   cursor.remove();
 });
 
-// document.addEventListener('mousemove', (e) => {
-//   const left =
-// })
+document.addEventListener("mousemove", (e) => {
+  //set cursor position on page
+  cursor.style.setProperty("--top", `${e.pageY}px`);
+  cursor.style.setProperty("--left", `${e.pageX}px`);
+
+  //check if on selectable element
+  isClickable(e);
+});
+
+function isClickable(e) {
+  switch (e.target.nodeName.toLowerCase()) {
+    case "a":
+      cursor.style.setProperty("scale", "1.5");
+      break;
+    case "button":
+      animateBtnFill(e);
+      break;
+    default:
+      cursor.style.setProperty("scale", "1");
+      return;
+  }
+}
+
+function animateBtnFill(e) {}
