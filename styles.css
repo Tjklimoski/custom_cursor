@@ -1,0 +1,97 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+html {
+  --primary-color: #0a360a;
+  --background-primary: #ffe4c4;
+  --background-secondary: #ddc4a6;
+}
+
+body {
+  background-color: #ffe4c4;
+  color: var(--primary-color);
+  margin: 0;
+  padding: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5rem;
+}
+
+header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+button {
+  background: transparent;
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 2rem;
+}
+
+img {
+  border-radius: 1rem;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+  background-color: var(--background-secondary);
+  border-radius: 1rem;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.card h2 {
+  margin-block-end: .5em;
+  line-height: 0;
+}
+
+.card p {
+  flex-grow: 1;
+}
+
+.card button {
+  width: 100%;
+  border: 1px solid var(--primary-color);
+}
+
+.card a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.cursor {
+  --top: 0;
+  --left: 0;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  background-color: white;
+  border-radius: 2rem;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
