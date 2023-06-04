@@ -2,6 +2,14 @@
 const cursor = document.createElement("div");
 cursor.classList.add("cursor");
 
+//get Interactable page elements
+const interactableElements = [...document.querySelectorAll("*")].filter(
+  (el) => {
+    if (el.tagName === "A" || el.tagName === "INPUT") return el;
+  }
+);
+const btns = document.querySelectorAll("button");
+
 //add cursor to document when user's mouse enters page
 document.addEventListener("mouseenter", () => {
   document.body.prepend(cursor);
@@ -12,12 +20,18 @@ document.addEventListener("mouseleave", () => {
   cursor.remove();
 });
 
-document.addEventListener("mousemove", (e) => {
-  //set cursor position on page
-  setCursorPosition(e);
+//set cursor position
+document.addEventListener("mousemove", setCursorPosition);
 
-  //check if on selectable element
-  isClickable(e);
+//cursor grows when hovering on interactable element.
+interactableElements.forEach((el) => {
+  el.addEventListener("mouseenter", setScale);
+  el.addEventListener("mouseleave", removeScale);
+});
+
+btns.forEach((btn) => {
+  btn.addEventListener("mouseenter", fillBtn);
+  btn.addEventListener("mouseleave", leaveBtn);
 });
 
 function setCursorPosition(e) {
@@ -25,20 +39,42 @@ function setCursorPosition(e) {
   cursor.style.setProperty("--x", `${e.x}px`);
 }
 
-function isClickable(e) {
-  switch (e.target.nodeName.toLowerCase()) {
-    case "a":
-    case "video":
-    case "input":
-      cursor.style.setProperty("--scale", "1.5");
-      break;
-    case "button":
-      animateBtnFill(e);
-      break;
-    default:
-      cursor.style.removeProperty("--scale");
-      return;
-  }
+function setScale() {
+  cursor.style.setProperty("--scale", "1.5");
 }
 
-function animateBtnFill(e) {}
+function removeScale() {
+  cursor.style.removeProperty("--scale");
+}
+
+function fillBtn(e) {
+  //for cursor to animate filling up the btn
+  cursor.classList.add("fill-btn");
+
+  //prevent updating cursor position while inside button
+  document.removeEventListener("mousemove", setCursorPosition);
+
+  //hide buttons border (if there is one) to prevent strange visual with cursor overlay
+  e.target.style.setProperty("border-color", "transparent");
+
+  const btn = e.target.getBoundingClientRect();
+  cursor.style.setProperty("--width", `${btn.width}px`);
+  cursor.style.setProperty("--height", `${btn.height}px`);
+  cursor.style.setProperty("--x", `${btn.width / 2 + btn.x}px`);
+  cursor.style.setProperty("--y", `${btn.height / 2 + btn.y}px`);
+}
+
+function leaveBtn(e) {
+  //to prevent animating the transform as user moves mouse on page (would casue delay)
+  cursor.classList.remove("fill-btn");
+
+  //re-enable mousemove event listener
+  document.addEventListener("mousemove", setCursorPosition);
+
+  //return all styles to default
+  e.target.style.removeProperty("border-color");
+  cursor.style.removeProperty("--width");
+  cursor.style.removeProperty("--height");
+  cursor.style.removeProperty("--x");
+  cursor.style.removeProperty("--y");
+}
