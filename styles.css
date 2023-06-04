@@ -143,3 +143,8 @@ form label {
   border-radius: var(--btn-border-radius);
   transition: width var(--animation-time) ease-in-out, height var(--animation-time) ease-in-out, transform var(--animation-time) ease-in-out;
 }
+
+button:focus-visible {
+  background-color: var(--primary-color);
+  color: white;
+}
