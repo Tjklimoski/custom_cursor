@@ -16,7 +16,7 @@ body {
   background-color: #ffe4c4;
   color: var(--primary-color);
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5rem;
   position: relative;
@@ -53,7 +53,7 @@ a {
   font-weight: bold;
 }
 
-.hero-img {
+.hero-video {
   width: 100%;
 }
 

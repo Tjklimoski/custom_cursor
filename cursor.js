@@ -1,3 +1,5 @@
+const SCALE = 1.7;
+
 //create cursor
 const cursor = document.createElement("div");
 cursor.classList.add("cursor");
@@ -5,7 +7,8 @@ cursor.classList.add("cursor");
 //get Interactable page elements
 const interactableElements = [...document.querySelectorAll("*")].filter(
   (el) => {
-    if (el.tagName === "A" || el.tagName === "INPUT") return el;
+    if (el.tagName === "A" || el.tagName === "INPUT" || el.tagName === "VIDEO")
+      return el;
   }
 );
 
@@ -42,7 +45,7 @@ function setCursorPosition(e) {
 }
 
 function setScale() {
-  cursor.style.setProperty("--scale", "1.5");
+  cursor.style.setProperty("--scale", SCALE.toString());
 }
 
 function removeScale() {
