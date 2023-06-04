@@ -9,6 +9,7 @@ html {
   --background-primary: #ffe4c4;
   --background-secondary: #ddc4a6;
   --btn-border-radius: 2rem;
+  --animation-time: 100ms;
 }
 
 body {
@@ -133,11 +134,12 @@ form label {
   mix-blend-mode: difference;
   pointer-events: none;
   z-index: 1000;
-  transition: width 100ms ease-in-out, height 100ms ease-in-out;
+  /* animates the change in scale on the cursor */
+  transition: width var(--animation-time) ease-in-out, height var(--animation-time) ease-in-out;
 }
 
 /* Applied when cursor enters button element */
 .fill-btn {
   border-radius: var(--btn-border-radius);
-  transition: width 100ms ease-in-out, height 100ms ease-in-out, transform 100ms ease-in-out;
+  transition: width var(--animation-time) ease-in-out, height var(--animation-time) ease-in-out, transform var(--animation-time) ease-in-out;
 }
