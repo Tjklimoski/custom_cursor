@@ -28,6 +28,8 @@ function setCursorPosition(e) {
 function isClickable(e) {
   switch (e.target.nodeName.toLowerCase()) {
     case "a":
+    case "video":
+    case "input":
       cursor.style.setProperty("--scale", "1.5");
       break;
     case "button":

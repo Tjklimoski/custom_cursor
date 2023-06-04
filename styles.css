@@ -1,6 +1,7 @@
 *, *::after, *::before {
   box-sizing: border-box;
   padding: 0;
+  cursor: none;
 }
 
 html {
@@ -56,13 +57,14 @@ a {
 
 .cards {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 300px;
   padding: 1rem;
   background-color: var(--background-secondary);
   border-radius: 1rem;
@@ -93,21 +95,46 @@ a {
   color: var(--primary-color);
 }
 
+form {
+  display: flex;
+  gap: 1rem;
+  margin-block: 3rem;
+  align-items: center;
+}
+
+form label {
+  font-size: 2rem;
+}
+
+.text-input {
+  flex-grow: 1;
+  background: none;
+  border: 2px solid var(--primary-color);
+  height: 3rem;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 3rem;
+}
+
 .cursor {
   --x: 0;
   --y: 0;
   --scale: 1;
-  width: calc(1.5rem * var(--scale));
+  --width: 1.5rem;
+  width: calc(var(--width) * var(--scale));
   aspect-ratio: 1;
   background-color: white;
   border-radius: 2rem;
   position: fixed;
   top: 0;
   left: 0;
-  /* transform: translate(0, 0); */
   transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
   mix-blend-mode: difference;
   pointer-events: none;
   z-index: 1000;
-  transition: width 150ms ease-in-out;
+  transition: width 100ms ease-in-out;
 }
+
+/* .fill {
+  animation:
+} */
