@@ -8,6 +8,7 @@ html {
   --primary-color: #0a360a;
   --background-primary: #ffe4c4;
   --background-secondary: #ddc4a6;
+  --btn-border-radius: 2rem;
 }
 
 body {
@@ -39,7 +40,7 @@ button {
   background: transparent;
   padding: .5rem 1rem;
   border: none;
-  border-radius: 2rem;
+  border-radius: var(--btn-border-radius);
 }
 
 img {
@@ -135,6 +136,8 @@ form label {
   transition: width 100ms ease-in-out, height 100ms ease-in-out;
 }
 
+/* Applied when cursor enters button element */
 .fill-btn {
+  border-radius: var(--btn-border-radius);
   transition: width 100ms ease-in-out, height 100ms ease-in-out, transform 100ms ease-in-out;
 }

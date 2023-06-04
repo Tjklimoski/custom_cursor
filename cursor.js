@@ -8,6 +8,8 @@ const interactableElements = [...document.querySelectorAll("*")].filter(
     if (el.tagName === "A" || el.tagName === "INPUT") return el;
   }
 );
+
+//get button elements for seperate animation effect
 const btns = document.querySelectorAll("button");
 
 //add cursor to document when user's mouse enters page
