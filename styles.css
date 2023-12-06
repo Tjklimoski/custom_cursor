@@ -1,4 +1,6 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
   padding: 0;
   cursor: none;
@@ -9,7 +11,7 @@ html {
   --background-primary: #ffe4c4;
   --background-secondary: #ddc4a6;
   --btn-border-radius: 2rem;
-  --animation-time: 100ms;
+  --animation-time: 250ms;
 }
 
 body {
@@ -24,7 +26,7 @@ body {
 }
 
 header {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -39,7 +41,7 @@ h1 a {
 
 button {
   background: transparent;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: var(--btn-border-radius);
 }
@@ -79,7 +81,7 @@ a {
 }
 
 .card h2 {
-  margin-block-end: .5em;
+  margin-block-end: 0.5em;
   line-height: 0;
 }
 
@@ -135,13 +137,16 @@ form label {
   pointer-events: none;
   z-index: 1000;
   /* animates the change in scale on the cursor */
-  transition: width var(--animation-time) ease-in-out, height var(--animation-time) ease-in-out;
+  transition: width var(--animation-time) ease-in-out,
+    height var(--animation-time) ease-in-out;
 }
 
 /* Applied when cursor enters button element */
 .fill-btn {
   border-radius: var(--btn-border-radius);
-  transition: width var(--animation-time) ease-in-out, height var(--animation-time) ease-in-out, transform var(--animation-time) ease-in-out;
+  transition: width var(--animation-time) ease-in-out,
+    height var(--animation-time) ease-in-out,
+    transform var(--animation-time) ease-in-out;
 }
 
 button:focus-visible {

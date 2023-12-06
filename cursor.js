@@ -5,18 +5,18 @@ const cursor = document.createElement("div");
 cursor.classList.add("cursor");
 
 //get Interactable page elements
-const interactableElements = [...document.querySelectorAll("*")].filter(
-  (el) => {
-    if (el.tagName === "A" || el.tagName === "INPUT" || el.tagName === "VIDEO")
-      return el;
-  }
-);
+const interactableElements = [...document.querySelectorAll("*")].filter(el => {
+  if (el.tagName === "A" || el.tagName === "INPUT" || el.tagName === "VIDEO")
+    return el;
+});
 
 //get button elements for seperate animation effect
 const btns = document.querySelectorAll("button");
 
 //add cursor to document when user's mouse enters page
-document.addEventListener("mouseenter", () => {
+document.addEventListener("mouseover", () => {
+  // mouseenter wasnt working, had to change it to mouseover
+  console.log("document mouseenter");
   document.body.prepend(cursor);
 });
 
@@ -29,12 +29,12 @@ document.addEventListener("mouseleave", () => {
 document.addEventListener("mousemove", setCursorPosition);
 
 //cursor grows when hovering on interactable element.
-interactableElements.forEach((el) => {
+interactableElements.forEach(el => {
   el.addEventListener("mouseenter", setScale);
   el.addEventListener("mouseleave", removeScale);
 });
 
-btns.forEach((btn) => {
+btns.forEach(btn => {
   btn.addEventListener("mouseenter", fillBtn);
   btn.addEventListener("mouseleave", leaveBtn);
 });
